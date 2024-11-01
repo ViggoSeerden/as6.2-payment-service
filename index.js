@@ -1,7 +1,7 @@
 const amqplib = require("amqplib");
 
 async function startMessagingInstance() {
-    connection = await amqplib.connect('amqp://rabbitmq-service')
+    connection = await amqplib.connect('amqp://localhost')
     channel = await connection.createChannel()
 
     var queue = 'payment-skeleton';

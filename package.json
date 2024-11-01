@@ -2,15 +2,19 @@
   "name": "payment-service",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index.js"
+    "dev": "node src/index.js",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@mollie/api-client": "^4.1.0",
     "amqplib": "^0.10.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
   }
 }
