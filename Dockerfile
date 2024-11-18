@@ -5,5 +5,5 @@ COPY package*.json ./
 USER node
 RUN yarn
 COPY --chown=node:node . .
-EXPOSE 8080
+EXPOSE 8083
 CMD [ "yarn", "dev" ]
