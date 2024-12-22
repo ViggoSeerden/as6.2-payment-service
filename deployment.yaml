@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment-service
+  template:
+    metadata:
+      labels:
+        app: payment-service
+    spec:
+      containers:
+        - name: payment-service
+          image: PLACEHOLDER_AZURE_CONTAINER_REGISTRY.azurecr.io/as6-2_osso_payment_service:main
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: AMQP_RABBITMQ
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-service
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: payment-service
+  type: ClusterIP
